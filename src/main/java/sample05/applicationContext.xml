@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  dependency injection for UserBean (construct class instance) -->
+    <bean class="sample05.UserBean" id="userBean">
+        <property name="id" value="programmer123"></property>
+        <property name="name" value="John Smith"></property>
+        <property name="addr" value="KOR"></property>
+        <property name="phone" value="1234-1234"></property>
+    </bean>
+
+    <!--  dependency injection for ProductBean (construct class instance) -->
+    <bean class="sample05.ProductBean" id="productBean">
+        <property name="productNumber" value="938512"></property>
+        <property name="productPrice" value="5000"></property>
+        <property name="productName" value="MongShell"></property>
+    </bean>
+
+    <!--  dependency injection for OrderMessageImpl (inject the DI instances above by referring to their ids) -->
+    <bean class="sample05.OrderMessageImpl" id="orderMessage">
+        <property name="orderId" value="90"></property>
+        <property name="message" value="주문되었습니다."></property>
+        <property name="userBean" ref="userBean"></property>
+        <property name="productBean" ref="productBean"></property>
+    </bean>
+
+
+</beans>

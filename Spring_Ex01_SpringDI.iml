@@ -8,6 +8,7 @@
           <file>file://$MODULE_DIR$/src/main/java/sample02/springDIConstructor.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/sample03/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/sample04/springDISetter.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample05/applicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>
