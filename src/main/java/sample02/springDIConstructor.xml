@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        DI의 개념
+
+        1)생성자를 이용한 주입
+            - value : 기본형
+            - ref : 객체타입형
+
+        2)
+    -->
+
+    <!-- 객체 생성 (1) -->
+    <bean class="sample02.Member" id="m1"/>
+
+    <bean class="sample02.Member" id="m2">
+        <constructor-arg value="dave"/> <!-- 인수 한개 받는 생성자에 "dave" 를 입력하여 호출 -->
+       <constructor-arg value="20" type="int"/>
+    </bean>
+
+    <bean class="sample02.Member" id="m3">
+        <constructor-arg value="dave"/> <!-- 인수 두개 받는 생성자 -->
+        <constructor-arg value="20" type="int"/> <!-- type="int" 추가 -->
+    </bean>
+
+    <bean class="sample02.Member" id="m4">
+        <constructor-arg value="dave"/> <!-- 인수 모두 받는 생성자 -->
+        <constructor-arg value="1234" />
+        <constructor-arg value="30" type="int"/> <!-- type="int" 추가 -->
+        <constructor-arg value="kor" />
+    </bean>
+
+    <!-- 객체 생성 (2) -->
+    <bean class="sample02.Member" id="m5">
+        <constructor-arg>
+            <value>dave2</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>1234</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>33</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>seongbok</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- memberDAO , service-->
+    <!-- MemberService(MemberDAO memberDAO, Member member) 이므로.. 객체는 value 대신 ref 로 값을 넣어준다 -->
+    <bean class="sample02.MemberDAO" id="memberDAO"/>
+    <bean class="sample02.MemberService" id="service">
+        <constructor-arg ref="memberDAO"/>
+        <constructor-arg ref="m5" />
+    </bean>
+
+</beans>

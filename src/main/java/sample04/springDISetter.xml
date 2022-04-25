@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        ** Setter 는 xml 파일에서 <property> 태그를 통해 inject 해준다
+    -->
+
+    <!-- 객체 생성 -->
+    <bean class="sample04.Student" id="student">
+        <property name="name" value="dave"></property> <!-- setName() 호출 -->
+        <property name="no" value="100"></property>
+        <property name="addr" value="kor seongbok"></property>
+        <property name="phone" value="222-9898"></property>
+    </bean>
+
+    <bean class="sample04.StudentDAOImpl" id="dao"></bean>
+
+    <bean class="sample04.StudentServiceImpl" id="service">
+        <property name="studentDAO" ref="dao"></property>
+    </bean>
+
+    <bean class="sample04.StudentController" id="controller">
+        <property name="student" ref="student"></property> <!-- setStudent() 호출 -->
+        <property name="studentService" ref="service"></property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="sample03.BookVo" id="bookVo">
+        <constructor-arg value="Spring"/>
+        <constructor-arg value="Author1"/>
+        <constructor-arg value="20000" type="int"/>
+        <constructor-arg value="22.04.25"/>
+    </bean>
+
+    <bean class="sample03.BookDAOImpl" id="bookDAOImpl"/>
+
+    <!--    make sure to use ref="" instead of value to give constructor -->
+    <bean class="sample03.BookController" id="bookController">
+        <constructor-arg ref="bookVo"/>
+        <constructor-arg ref="bookDAOImpl"/>
+    </bean>
+
+
+</beans>
