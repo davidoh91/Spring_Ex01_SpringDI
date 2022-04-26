@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--
+        in order to use @Autowired annotation, register Autowired bean
+          - first attempt : "byType" injection
+          - second attempt : "byName" injection
+    -->
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />-->
+
+
+    <!--
+        simply add a context to initialize annotations
+        such as @Autowired, @Qualifier, etc...
+        * AutowiredAnnotationBeanPostProcessor
+        * RequiredAnnotationBeanPostProcessor
+        * CommonAnnotationBeanPostProcessor
+    -->
+    <context:annotation-config/> <!-- <<<<< the gist -->
+
+
+    <bean class="sample09.EmpDTO" id="dto" p:empno="100" />
+    <bean class="sample09.EmpDTO" id="dto2" p:empno="200">
+        <qualifier value="aa"/>
+    </bean>
+
+    <bean class="sample09.EmpService" id="service" />
+
+    <bean class="sample09.EmpController" id="controller" />
+
+    <bean class="sample09.ResourceBean" id="resourceBean" />
+
+</beans>

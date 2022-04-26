@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--  declare the external properties file for reference via "PropertySourcesPlaceholderConfigurer  -->
+<!--    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
+<!--        <property name="location">-->
+<!--            <value>classpath:sample06/customerInfo.properties</value>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+                <value>classpath:sample06/customerInfo.properties</value>
+                <value>classpath:sample06/customerInfo2.properties</value>
+            </array>
+        </property>
+    </bean>
+
+    <!--  use "context" which replaces the PropertySourcesPlaceholderConfigurer  -->
+    <context:property-placeholder location="classpath:sample06/customerInfo.properties,classpath:sample06/customerInfo2.properties">
+
+    </context:property-placeholder>
+
+
+    <bean class="sample06.Customer" id="cu1">
+        <constructor-arg value="dave"></constructor-arg>
+        <property name="addr" value="seongbok"/>
+        <property name="age" value="30"/>
+    </bean>
+
+    <bean class="sample06.Customer" id="cu2" >
+        <property name="addr" value="kor"/>
+        <property name="age" value="22"/>
+        <property name="id" value="user1234"/>
+    </bean>
+
+    <bean class="sample06.Customer" id="cu3" >
+        <property name="id" value="${id}"/>
+        <property name="addr" value="${addr}"/>
+        <property name="age" value="${age}"/>
+    </bean>
+
+    <bean class="sample06.Customer" id="cu4">
+        <property name="id" value="${cu.id}"/>
+        <property name="addr" value="${cu.addr}"/>
+        <property name="age" value="${cu.age}"/>
+    </bean>
+</beans>

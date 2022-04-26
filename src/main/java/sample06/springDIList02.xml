@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- import an external ~.xml file  -->
+    <import resource="classpath:sample06/springDIList01.xml" />
+
+    <bean class="sample06.ListBean" id="listBean">
+
+        <property name="intList">
+            <!-- insert values in the intList -->
+            <list>
+                <value>10</value>
+                <value>30</value>
+                <value>50</value>
+                <value>70</value>
+                <value>90</value>
+            </list>
+        </property>
+
+        <property name="strList">
+            <!-- insert values in the stringList -->
+            <list>
+                <value>broccoli</value>
+                <value>carrot</value>
+                <value>apple</value>
+                <value>pineapple</value>
+            </list>
+        </property>
+
+        <!-- use imported bean from springDIList01.xml -->
+        <property name="customerList">
+            <list>
+                <!--   refer to the beans (Customer instances in springDIList01.xml)  -->
+                <ref bean="cu1"/>
+                <ref bean="cu2"/>
+                <ref bean="cu3"/>
+                <ref bean="cu4"/>
+                <!--  or simply make a new Customer bean  -->
+                <bean class="sample06.Customer">
+                    <property name="id" value="dave"/>
+                    <property name="age" value="66"/>
+                    <property name="addr" value="asia"/>
+                </bean>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>

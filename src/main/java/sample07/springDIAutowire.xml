@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="sample07.MemberVO" id="memberVO" p:name="dave" p:age="30" p:addr="seongbok" />
+    <bean class="sample07.MemberVO" id="mvo" p:name="dave2" p:age="40" p:addr="asia" />
+
+<!--    <bean class="sample07.MemberController" id="memberController">-->
+<!--        <constructor-arg name="memberVO" ref="memberVO" />-->
+<!--        <constructor-arg name="member" ref="memberVO" />-->
+<!--    </bean>-->
+
+    <!--
+        autowire 속성 : xml 의 태그를 간소화 할 수 있다
+        -byType : setXxx() 호출한다. type 이 같은 객체를 자동으로 찾아서 주입
+                  단, 동일한 type 의 생성된 빈이 2개 이상일 경우 에러발생 (이 경우 byName 을 사용한다)
+
+        -byName : setXxx() 호출한다. xml 의 id 와 java 의 property 이름 (set 메소드의 param 명) 이 동일한 객체를 찾아서 주입
+
+        -constructor : 생성자 호출한다.
+                        먼저 byType을 찾고 동일한 객체가 여러개 있으면 byName 을 찾는다.
+                        여기서 byName 은 xml 의 id 와 java 생성자의 parameter 의 이름과 동일
+    -->
+    <bean class="sample07.MemberController" id="controller" autowire="constructor" />
+
+</beans>

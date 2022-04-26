@@ -9,6 +9,13 @@
           <file>file://$MODULE_DIR$/src/main/java/sample03/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/sample04/springDISetter.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/sample05/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample07/springDIAutowire.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample06/springDIList02.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample08/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample08/springDIAutowire.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample09/springDIAnnotation.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample10/springDIAnnotation.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/sample11/springDIAnnotation.xml</file>
         </fileset>
       </configuration>
     </facet>
